@@ -14,3 +14,9 @@ func hexToBase64(hs string) (string, error) {
 	log.Printf("%s", v)
 	return base64.StdEncoding.EncodeToString(v), nil
 }
+
+func xor(a, b []byte) []byte {
+	if len(a) != len(b) {
+		
+	}
+}
