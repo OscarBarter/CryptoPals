@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/hex"
 	"testing"
+	"io/ioutil"
 )
 
 func TestProblem1(t *testing.T) {
