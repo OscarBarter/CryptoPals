@@ -27,7 +27,7 @@ func xor(a, b []byte) []byte {
 	return res
 }
 
-func buildCorpus(text str ing) map[rune]float64 {
+func buildCorpus(text string) map[rune]float64 {
 	c := make(map[rune]float64)
 	for _, char := range text {
 		c[char]++
@@ -39,4 +39,6 @@ func buildCorpus(text str ing) map[rune]float64 {
 	return c
 }
 
-func findSingleXORKey 
+func findSingleXORKey() {
+
+}
