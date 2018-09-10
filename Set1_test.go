@@ -3,12 +3,13 @@ package cryptopals
 import (
 	"bytes"
 	"encoding/hex"
-	"testing"
 	"io/ioutil"
+	"testing"
+	"unicode/utf8"
 )
 
 func TestProblem1(t *testing.T) {
-	res, err := hexToBase64 ("49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d")
+	res, err := hexToBase64("49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -26,7 +27,7 @@ func TestProblem2(t *testing.T) {
 }
 func hexDecode(t *testing.T, s string) []byte {
 	v, err := hex.DecodeString(s)
-	if err != nil{
+	if err != nil {
 		t.Fatal("Failed to decode hex:", s)
 	}
 	return v
@@ -52,13 +53,13 @@ func scoreEnglish(text string, c map[rune]float64) float64 {
 	for _, char := range text {
 		score += c[char]
 	}
-	return score / float64(utf8.RuneCountInString(text)
+	return score / float64(utf8.RuneCountInString(text))
 }
 
-func singleXOR(in []byte, key byte) []byte { 
+func singleXOR(in []byte, key byte) []byte {
 	res := make([]byte, len(in))
 	for i, c := range in {
-		res[i]  =c ^ key
+		res[i] = c ^ key
 	}
 	return res
 }
