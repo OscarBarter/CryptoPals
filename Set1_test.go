@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/hex"
 	"testing"
+	"io/ioutil"
 )
 
 func TestProblem1(t *testing.T) {
@@ -31,7 +32,7 @@ func hexDecode(t *testing.T, s string) []byte {
 	return v
 }
 
-func corpusFromFile(t *testing.T, ) map[rune]float64 {
+func corpusFromFile(t *testing.T, name string) map[rune]float64 {
 	text, err := ioutil.ReadFile(name)
 	if err != nil {
 		t.Fatal("failed to open corpus file:", err)
@@ -39,3 +40,25 @@ func corpusFromFile(t *testing.T, ) map[rune]float64 {
 	return buildCorpus(string(text))
 }
 
+func TestProblem3(t *testing.T) {
+	c := corpusFromFile(t, "_testData/aliceinwonderland.txt")
+	for char, val := range c {
+		t.Logf("%c: %.5f", char, val)
+	}
+}
+
+func scoreEnglish(text string, c map[rune]float64) float64 {
+	var score float64
+	for _, char := range text {
+		score += c[char]
+	}
+	return score / float64(utf8.RuneCountInString(text)
+}
+
+func singleXOR(in []byte, key byte) []byte { 
+	res := make([]byte, len(in))
+	for i, c := range in {
+		res[i]  =c ^ key
+	}
+	return res
+}

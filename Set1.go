@@ -38,3 +38,5 @@ func buildCorpus(text str ing) map[rune]float64 {
 	}
 	return c
 }
+
+func findSingleXORKey 
