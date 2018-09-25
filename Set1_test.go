@@ -3,9 +3,9 @@ package cryptopals
 import (
 	"bytes"
 	"encoding/hex"
+	"fmt"
 	"io/ioutil"
 	"testing"
-	"fmt"
 )
 
 func TestProblem1(t *testing.T) {
