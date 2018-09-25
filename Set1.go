@@ -68,3 +68,4 @@ func findSingleXORKey(in []byte, c map[rune]float64) []byte {
 	}
 	return res
 }
+
