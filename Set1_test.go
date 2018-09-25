@@ -5,7 +5,6 @@ import (
 	"encoding/hex"
 	"io/ioutil"
 	"testing"
-	"unicode/utf8"
 )
 
 func TestProblem1(t *testing.T) {
@@ -46,20 +45,7 @@ func TestProblem3(t *testing.T) {
 	for char, val := range c {
 		t.Logf("%c: %.5f", char, val)
 	}
-}
 
-func scoreEnglish(text string, c map[rune]float64) float64 {
-	var score float64
-	for _, char := range text {
-		score += c[char]
-	}
-	return score / float64(utf8.RuneCountInString(text))
-}
-
-func singleXOR(in []byte, key byte) []byte {
-	res := make([]byte, len(in))
-	for i, c := range in {
-		res[i] = c ^ key
-	}
-	return res
+	res := findSingleXORKey(hexDecode(t, "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"), c)
+	t.Logf("%s", res)
 }
