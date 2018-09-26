@@ -5,6 +5,7 @@ import (
 	"encoding/hex"
 	"fmt"
 	"io/ioutil"
+	"strings"
 	"testing"
 )
 
@@ -45,7 +46,7 @@ func corpusFromFile(name string) map[rune]float64 {
 var corpus = corpusFromFile("_testData/aliceinwonderland.txt")
 
 func TestProblem3(t *testing.T) {
-	res, _ := findSingleXORKey(hexDecode(t, "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"), c)
+	res, _ := findSingleXORKey(hexDecode(t, "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"), corpus)
 	t.Logf("%s", res)
 }
 
@@ -54,11 +55,14 @@ func TestProblem4(t *testing.T) {
 	if err != nil {
 		t.Fatal("failed to read challenge file:", err)
 	}
-	for _, line := range bytes.Split(string(text), []byte()) {
+	var lastScore float64
+	var res []byte
+	for _, line := range strings.Split(string(text), "\n") {
 		out, score := findSingleXORKey(hexDecode(t, line), corpus)
 		if score > lastScore {
+			res = out
 			lastScore = score
 		}
 	}
-	t.Logf("%S", res)
+	t.Logf("%s", res)
 }
