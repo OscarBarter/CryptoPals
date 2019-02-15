@@ -1,6 +1,6 @@
 # CryptoPals
 CryptoPals challenges
 
-Set 1 Problems 1 and 2 are completed but 3 is still being worked on.
+Set 1 Problems 1,2 and 3 are competed and 4 is being worked on.
 
 No other sets have been started
